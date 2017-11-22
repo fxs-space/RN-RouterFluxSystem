@@ -9,9 +9,20 @@ import PropTypes from 'prop-types';
 import {NavigationBar, Label} from 'teaset';
 
 export default class Detail1 extends Component {
+    static defaultProps = {
+        callBackJump: () => {}
+    };
+    static propTypes = {
+        callBackJump: PropTypes.func
+    };
+
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentWillUnmount() {
+        this.props.callBackJump && this.props.callBackJump('回调函数传参');
     }
 
     render() {
@@ -35,6 +46,7 @@ export default class Detail1 extends Component {
                     }
                 />
                 <Text>欢迎进入详情页</Text>
+                <Text style={{marginTop: 15}} onPress={() => Actions.pop({refresh:{content:'pop方法传参'}})}>点击pop方法传参</Text>
             </View>
         );
     }

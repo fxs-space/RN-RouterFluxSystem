@@ -14,13 +14,19 @@ export default class Test2 extends Component {
     }
 
     render() {
+        // console.log('===========',this.props.content);
         return (
             <View style={styles.container}>
-                <Text onPress={() => Actions.Detail1()}>点我进入详情页</Text>
+                <Text onPress={() => Actions.Detail1({callBackJump: (v)=> alert(v)})}>点我进入详情页</Text>
+                <Text style={{marginTop:15}}>{this.props.content}</Text>
             </View>
         );
     }
 }
+
+Test2.PropTypes = {
+    content: PropTypes.string,
+};
 
 const styles = StyleSheet.create({
     container: {
